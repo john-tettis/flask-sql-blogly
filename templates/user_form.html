@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}User Form{% endblock%}
+{% block content %}
+
+<form method="post" action="/users/new" class="bg-light p-4 m-4 rounded border" >
+<h1>Create New User</h1>
+<p id="warning" class ="text-danger"style="height:1.2em"></p>
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="first_name">First Name <span class="text-danger">*</span></label>
+                <input type="Text" class="form-control" id="first_name" name="first_name" placeholder="John">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="last_name">Last Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Doe">
+            </div>
+        </div>
+    </div>
+   
+    
+    
+    <div class="form-group">
+        <label for="image_url">Description</label>
+        <textarea class="form-control" id="description" name="description" placeholder="Write something about yourself!"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="image_url">Image URl</label>
+        <input type="text" class="form-control" id="image_url" name="image_url" placeholder="www.img.com/image">
+    </div>
+    <a href="/" class="btn btn-secondary m-2 block">Cancel</a>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
