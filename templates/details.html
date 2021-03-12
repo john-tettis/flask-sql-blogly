@@ -7,9 +7,24 @@
         <div class="card-body">
             <h5 class="card-title">{{user.full_name}}</h5>
             <p class="card-text">{{user.description}}</p>
-            <a href="/users/{{user.id}}/edit" class="btn btn-primary m-2">Edit User</a>
-            <a href="/users/{{user.id}}/delete" class="btn btn-danger m-2">Delete User</a>
+            <ul>
+                {% for post in user.posts %}
+                <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>
+                {% endfor %}
+            </ul>
+            <div class="row">
+                <div class="col">
+                    <a href="/users/{{user.id}}/edit" class="btn btn-primary">Edit User</a>
+                </div>
+                <div class="col">
+                    <a href="/users/{{user.id}}/delete" class="btn btn-danger">Delete User</a>
+                </div>
+            </div>
+            
+            <a href="/users/{{user.id}}/posts/new" class="btn btn-primary btn-block mt-2">Create a new post</a>
+            <a href="/" class="btn btn-outline-secondary btn-block">Return home</a>
         </div>
-        <a href="/" class="btn btn-secondary m-2 block">Return home</a>
+        
+        
 </div>
 {% endblock %}

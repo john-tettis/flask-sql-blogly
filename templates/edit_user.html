@@ -3,7 +3,7 @@
 
 {% block content %}
     <h1>Edit User</h1>
-<form method="post" action="/users/{{user.id}}/edit" class="bg-light p-4 rounded border" >
+<form method="post" id="user-form" action="/users/{{user.id}}/edit" class="bg-light p-4 rounded border" >
     <p id="warning" class ="text-danger" style="height:1.2em"></p>
     <div class="row">
         <div class="col">

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Blogly{% endblock%}
+{% block content %}
+{% for post in posts %}
+    <div class="card mt-3" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <p class="card-text">{{post.content}}</p>
+            <small> by <a href="/users/{{post.user.id}}">{{post.user.full_name}}</a> on {{post.created_at}}</small>
+
+            <a href="/posts/{{post.id}}" class="btn btn-primary btn-block mt-2">View Details</a>
+        </div>
+</div>
+{% endfor %}
+{% endblock %}
