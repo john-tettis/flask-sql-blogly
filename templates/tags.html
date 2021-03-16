@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+
+{% block title%}Tags{% endblock%}
+
+{% block content%}
+<div class="card mx-auto mt-3">
+<div class="card-header">Tags</div>
+    <ul class="list-group">
+        {% for tag in tags%}
+        <li class="list-group-item d-flex justify-content-between">
+            <a class=' d-inline align-middle'href="/tags/{{tag.id}}">{{tag.name}}</a>
+            <a href="/tags/{{tag.id}}/delete"><i class="float-end far fa-trash-alt text-danger  m-3"></i></li></a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="/tags/new" class="btn btn-primary block">Create new Tag</a>
+</div>
+{% endblock%}

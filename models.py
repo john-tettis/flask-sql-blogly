@@ -54,3 +54,23 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     user = db.relationship('User')
+    
+    # post_tags = db.relationship('PostTag',cascade='all, delete, delete-orphan')
+
+class Tag(db.Model):
+
+    __tablename__ = 'tags'
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    name = db.Column(db.Text, unique=True)
+
+    posts = db.relationship('Post', secondary='posts_tags', backref='tags', cascade='all,delete', passive_deletes=True)
+
+class PostTag(db.Model):
+    __tablename__ = 'posts_tags'
+
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id', ondelete='cascade'), primary_key=True)
+
+    tag_id = db.Column(db.Integer, db.ForeignKey('tags.id', ondelete='cascade'), primary_key=True)
+

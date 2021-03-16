@@ -1,4 +1,4 @@
-from models import db, User, Post
+from models import db, User, Post, Tag, PostTag
 from app import app
 
 db.drop_all()
@@ -9,10 +9,21 @@ u2 = User(first_name = 'Benjamin', last_name = 'Button', image_url = 'data:image
 
 post1 = Post(title='I am literally an old man', content='I age backwards, yo', user_id=2)
 post2 = Post(title='I like apples', content='You guys know where I acan find some apples?', user_id=1)
+tags = [Tag(name="awesome"),Tag(name="fun"),Tag(name="heck-yes"),Tag(name="beans")]
 
 
 db.session.add_all([u1,u2])
+db.session.add_all(tags)
 db.session.commit()
+
+
+
+
+post1.tags.append(Tag.query.first())
+post1.tags.append(Tag.query.get(2))
+
+post2.tags.append(Tag.query.get(3))
+post2.tags.append(Tag.query.get(4))
 
 db.session.add_all([post1,post2])
 db.session.commit()

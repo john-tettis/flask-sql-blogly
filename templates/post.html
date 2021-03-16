@@ -2,11 +2,19 @@
 
 {% block title %}{{post.title}}{% endblock%}
 {% block content %}
-    <div class="card mt-3" style="width: 18rem;">
+    <div class="card mt-3 mx-auto" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">{{post.title}}</h5>
             <p class="card-text">{{post.content}}</p>
-            <small>by {{post.user.full_name}} on {{post.created_at}}</small>
+            {% if post.tags%}
+            <div class="my-1">Tags:
+                {% for tag in post.tags%}
+                <span class="badge badge-pill badge-primary">{{tag.name}}</span>
+                {% endfor %}
+            </div>
+                
+            {% endif %}
+            <small>by <a href ="/users/{{post.user.id}}">{{post.user.full_name}}</a> on {{post.created_at}}</small>
         </div>
         <div class="container-fluid">
             <div class="row">

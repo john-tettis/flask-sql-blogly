@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}{{tag.name}}{% endblock%}
+{% block content %}
+    <div class="card mt-3" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Posts with '{{tag.name}}' tag</h5>
+            {% if tag.posts%}
+            <ul class="list-group">
+                {% for post in tag.posts%}
+                <li class="list-group-item"><a href="/posts/{{post.id}}">{{post.title}}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <a href="/tags/{{tag.id}}/edit" class="btn btn-primary">Edit</a>
+                </div>
+                <div class="col">
+                    <a href="/tags/{{tag.id}}/delete" class="btn btn-danger">Delete</a>
+                </div>
+            </div> 
+        </div>
+        <a href="/" class="btn btn-secondary m-2">Return home</a>
+        
+</div>
+{% endblock %}
